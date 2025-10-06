@@ -82,19 +82,14 @@ from flask import Flask, Response
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return "Welcome! Try visiting /coinflip to flip a coin."
-
 # Your code here
 @app.route("/coinflip")
 def coin_flip():
+    """"Coin flip function"""
     outcomes = ["Heads", "Tails"]
     choice = random.choice(outcomes)
     result_json = json.dumps({"result": choice})
-
     return Response(result_json, content_type="application/json")
-
 
 if __name__ == "__main__":
     app.run(debug=True)
