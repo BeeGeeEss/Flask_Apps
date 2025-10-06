@@ -14,15 +14,15 @@
 # def coder():
 #     return "<p>This web app was created in a class at Coder Academy.</p>"
 
-# from flask import Flask
-# from datetime import datetime
+from flask import Flask
+from datetime import datetime
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
-# # Your code here
-# @app.route("/current_time/")
-# def current_time():
-#     return f"<p>{str(datetime.now().strftime('%H:%M'))}</p>"
+# Your code here
+@app.route("/current_time/")
+def current_time():
+    return f"<p>{str(datetime.now().strftime('%H:%M'))}</p>"
 
 
 # from flask import Flask
@@ -76,20 +76,20 @@
 
 
 
-import random
-import json
-from flask import Flask, Response
+# import random
+# import json
+# from flask import Flask, Response
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-# Your code here
-@app.route("/coinflip")
-def coin_flip():
-    """"Coin flip function"""
-    outcomes = ["Heads", "Tails"]
-    choice = random.choice(outcomes)
-    result_json = json.dumps({"result": choice})
-    return Response(result_json, content_type="application/json")
+# # Your code here
+# @app.route("/coinflip")
+# def coin_flip():
+#     """"Coin flip function"""
+#     outcomes = ["Heads", "Tails"]
+#     choice = random.choice(outcomes)
+#     result_json = json.dumps({"result": choice})
+#     return Response(result_json, content_type="application/json")
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
