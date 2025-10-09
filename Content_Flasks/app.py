@@ -14,15 +14,17 @@
 # def coder():
 #     return "<p>This web app was created in a class at Coder Academy.</p>"
 
-from flask import Flask
-from datetime import datetime
 
-app = Flask(__name__)
 
-# Your code here
-@app.route("/current_time/")
-def current_time():
-    return f"<p>{str(datetime.now().strftime('%H:%M'))}</p>"
+# from flask import Flask
+# from datetime import datetime
+
+# app = Flask(__name__)
+
+# # Your code here
+# @app.route("/current_time/")
+# def current_time():
+#     return f"<p>{str(datetime.now().strftime('%H:%M'))}</p>"
 
 
 # from flask import Flask
@@ -93,3 +95,51 @@ def current_time():
 
 # if __name__ == "__main__":
 #     app.run(debug=True)
+
+
+
+# from flask import Flask
+
+# app = Flask(__name__)
+
+# @app.route("/<some_value>")
+# def some_page(some_value):
+#     return f"<p>You gave the value {some_value} in the route!</p>"
+
+
+from flask import Flask, abort
+import json
+
+app = Flask(__name__)
+
+@app.route("/calculator/<int:first_number>/add/<int:second_number>")
+def add(first_number, second_number):
+    output = {
+        "operation": f"{first_number} plus {second_number}",
+        "result": first_number+second_number
+    }
+    return json.dumps(output)
+
+@app.route("/calculator/<int:first_number>/subtract/<int:second_number>")
+def subtract(first_number, second_number):
+    output = {
+        "operation": f"{first_number} minus {second_number}",
+        "result": first_number-second_number
+    }
+    return json.dumps(output)
+
+@app.route("/calculator/<int:first_number>/multiply/<int:second_number>")
+def multiply(first_number, second_number):
+    output = {
+        "operation": f"{first_number} multiplied by {second_number}",
+        "result": first_number*second_number
+    }
+    return json.dumps(output)
+
+@app.route("/calculator/<int:first_number>/divide/<int:second_number>")
+def divide(first_number, second_number):
+    output = {
+        "operation": f"{first_number} divided by {second_number}",
+        "result": first_number/second_number
+    }
+    return json.dumps(output)
